@@ -24,8 +24,14 @@ const MovieList = () => {
 
                 <tbody>
                 {movies.map(movie => {
-                    let type = movie.type === 0 ? 'Série' : 'Filme';
-                    let formatDate = (movie.last_view).split('T', 1)
+                    //let type = movie.type === 0 ? 'Série' : 'Filme';
+                    let type = ''
+                    if(movie.type === 0){
+                        type = 'Série'
+                    } else{
+                        type = 'Filme'
+                    }
+                    let formatDate = (movie.last_view).split('T', 2)
 
                     return(
                         <tr key={movie.id}>
@@ -33,7 +39,7 @@ const MovieList = () => {
                             <td>{type}</td>
                             <td>{movie.total_ep}</td>
                             <td>{movie.atual_ep}</td>
-                            <td>{formatDate}</td>
+                            <td>{movie.last_view}</td>
                         </tr>
                     )
                 })}
